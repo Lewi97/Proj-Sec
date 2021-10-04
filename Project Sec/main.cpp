@@ -29,16 +29,16 @@ int main()
     {
         int key = GetCharPressed();
 
-        // Check if more characters have been pressed on the same frame
+        // Check of er daadwerkelijk wordt getypt
         while (key > 0)
         {
-            // NOTE: Only allow keys in range [32..125]
+            // accepteer alleen toetsen dus 32 - 125, we willen alleen printable characters
             if ((key >= 32) && (key <= 125))
             {
                 input += (char)key;
             }
 
-            key = GetCharPressed();  // Check next character in the queue
+            key = GetCharPressed();  // meedere toetsen in 1 frame? pak de volgende
         }
 
         if (IsKeyPressed(KEY_BACKSPACE) && input.size() > 0)
@@ -46,6 +46,7 @@ int main()
 
         if (IsKeyPressed(KEY_ENTER) && input.size() > 3)
         {
+            // vraag me niet dit uit te leggen
             std::wstring widestr = std::wstring(input.begin(), input.end());
 
             argv[0] = const_cast<wchar_t*>(widestr.c_str());
