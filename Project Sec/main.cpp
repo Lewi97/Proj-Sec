@@ -21,7 +21,7 @@ int main()
     argv[0] = const_cast<wchar_t*>(arg);
 
     Py_Initialize();
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+    InitWindow(screenWidth, screenHeight, "Spam spam spam");
 
     system("cls");
 
