@@ -23,6 +23,8 @@ int main()
     Py_Initialize();
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
+    system("cls");
+
     while (!WindowShouldClose())
     {
         int key = GetCharPressed();
