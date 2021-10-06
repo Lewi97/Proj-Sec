@@ -29,22 +29,27 @@ void executePythonScript(std::string input)
 
 void handleMouseInteraction(const Vector2& mouse, UIRect& button, std::string input)
 {
-    if (button.isPointIn(mouse))
-        button.setOutlineColor(BLUE);
-    else
+    if (!button.isPointIn(mouse))
     {
+        button.setBackgroundColor(WHITE);
         button.setOutlineColor(BLACK);
-        return; // als muis niet over button hovered gaat die er ook niet op klikken, dus we kunnen leaven
+        return;
     }
 
-    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && button.isPointIn(mouse))
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
         if (input.size() > 3)
             executePythonScript(input);
-        button.setBackgroundColor(BLUE);
+        button.setOutlineColor(BLACK);
     }
+
+    if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+        button.setBackgroundColor(BLACK);
     else
+    {
+        button.setOutlineColor(BLUE);
         button.setBackgroundColor(WHITE);
+    }
 }
 
 int main()
