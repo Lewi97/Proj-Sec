@@ -17,5 +17,6 @@ public:
 	void setString(std::string to) { this->text = to; }
 	void setPosition(Vector2 to);
 	void draw();
+	Vector2 getPosition() { return { box.x, box.y }; }
 };
 

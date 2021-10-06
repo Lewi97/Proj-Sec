@@ -15,5 +15,6 @@ public:
 	void setBackgroundColor(Color to) { backgroundColor = to; }
 	void setOutlineColor(Color to) { outlineColor = to; }
 	bool isPointIn(Vector2 point);
+	Vector2 getPosition() { return { box.x,box.y }; }
 };
 

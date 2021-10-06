@@ -17,7 +17,7 @@ void executePythonScript(std::string input)
     // normaal is het eerste argument 'python' maar omdat we het via een functie callen
     // is het eerste argument leeg en crashed het programma, vandaar dat we gewoon een tweede
     // argument zelf toevoegen :)
-    argv[0] = const_cast<wchar_t*>(widestr.c_str());
+    argv[0] = const_cast<wchar_t*>(L"Python");
     argv[1] = const_cast<wchar_t*>(widestr.c_str());
 
     fopen_s(&file, "Scripts/emailsender.py", "r");
@@ -55,11 +55,12 @@ int main()
     std::string input;
     
     // onze textbox
-    const float length = 400, height = 40;
-    TextBox textbox({ (screenWidth - length) / 2.f, (screenHeight - height) / 2.f, length, height });
+    const float boxLength = 400, boxHeight = 40;
+    TextBox textbox({ (screenWidth - boxLength) / 2.f, (screenHeight - boxHeight) / 2.f, boxLength, boxHeight });
 
     // de button
-    UIRect button({ (screenWidth - 50) / 2.f, (screenHeight - 50) / 2.f + height }, { 50.f,50.f });
+    const float buttonLength = 125.f, buttonHeight = 40.f;
+    UIRect button({ (screenWidth - buttonLength) / 2.f, (screenHeight + boxHeight * 2) / 2.f }, {buttonLength, buttonHeight});
 
     // start python
     Py_Initialize();
@@ -99,8 +100,10 @@ int main()
         BeginDrawing();
         
         ClearBackground({50,50,50,255});
+        DrawText("IC202A Spam bot", screenWidth / 2 - 50 * 4, 50, 50, WHITE);
         textbox.draw();
         button.draw();
+        DrawText("Spam E-mail", button.getPosition().x + 5, button.getPosition().y + 10, 20, BLACK);
         EndDrawing();
     }
 
