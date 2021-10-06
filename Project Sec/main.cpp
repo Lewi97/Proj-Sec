@@ -21,7 +21,7 @@ void executePythonScript(std::string input)
     argv[1] = const_cast<wchar_t*>(widestr.c_str());
 
     fopen_s(&file, "Scripts/emailsender.py", "r");
-    if (file == NULL) return;
+    if (file == NULL) return; // bestaat file wel of zijn we gepranked, episch
     PySys_SetArgv(argc, argv);
     PyRun_SimpleFile(file, "Scripts/emailsender.py");
     fclose(file);
